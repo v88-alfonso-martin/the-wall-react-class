@@ -69,7 +69,7 @@
             }
 
             p {
-                color: rgba($black, 20%);
+                color: $black;
                 margin-bottom: 0;
                 margin-top: 40px;
                 text-align: center;
@@ -77,6 +77,10 @@
                 a {
                     color: $primary_color;
                     text-decoration: none;
+                }
+
+                &:last-child {
+                    color: rgba($black, 20%);
                 }
             }
         }
