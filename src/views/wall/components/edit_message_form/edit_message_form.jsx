@@ -8,7 +8,7 @@ export class EditMessageForm extends Component {
     }
 
     componentDidUpdate() {
-        if(this.props.is_editing) {
+        if(this.props.is_editing && !this.props.toggle_comment) {
             let end = this.props.message_content.length;
             this.textarea.current.setSelectionRange(end, end);
             this.textarea.current.focus();

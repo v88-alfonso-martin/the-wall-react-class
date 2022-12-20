@@ -77,6 +77,7 @@ export class MessageContainer extends Component {
                     is_editing={is_editing}
                     changeMessageContent={this.changeMessageContent}
                     submitEditMessage={this.submitEditMessage}
+                    toggle_comment={toggle_comment}
                 >
                     <ActionButtons 
                         openModal={openDeleteMessageModal} 
@@ -85,6 +86,7 @@ export class MessageContainer extends Component {
                         toggleCreateComment={this.toggleCreateComment}
                         comment_length={comments.length}
                         action_for="message"
+                        toggle_comment={toggle_comment}
                     />
                     <EditFormButtons
                         cancelEditForm={this.cancelEditMessage}

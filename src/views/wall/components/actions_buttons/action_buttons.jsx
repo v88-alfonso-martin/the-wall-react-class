@@ -7,24 +7,16 @@ import delete_icon from "../../../../assets/images/delete.png";
 import user_icon from "../../../../assets/images/User-Placeholder.png";
 
 export class ActionButtons extends Component {
-    constructor() {
-        super();
-        this.state = { is_comment_clicked: false }
-    }
 
-    handleCommentClick = (event) => {
-        this.props.toggleCreateComment(event);
-        this.setState(prev_state => ({ is_comment_clicked: !prev_state.is_comment_clicked }));
-    }
 	render() {
-        let { openModal, id, enableEditForm, action_for, comment_length } = this.props;
-        let { is_comment_clicked } = this.state;
+        let { openModal, id, enableEditForm, action_for, comment_length, toggle_comment, toggleCreateComment } = this.props;
+
 		return (
             <div className="action_buttons">
                 {action_for === "message" ? (
-                    <button type="button" onClick={this.handleCommentClick}>
-                        <img src={is_comment_clicked ? comment_icon_blue : comment_icon} alt="Comment Icon" />
-                        <span className={is_comment_clicked ? "blue_text" : ""}>{comment_length} Comment</span>
+                    <button type="button" onClick={toggleCreateComment}>
+                        <img src={toggle_comment ? comment_icon_blue : comment_icon} alt="Comment Icon" />
+                        <span className={toggle_comment ? "blue_text" : ""}>{comment_length} Comment</span>
                     </button>
                 ) : null}
                 <button type="button" onClick={enableEditForm}>
