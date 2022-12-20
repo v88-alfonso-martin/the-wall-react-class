@@ -52,7 +52,7 @@ export class Login extends Component {
 						<div className="form_group">
 							<div className="forgot_password_container">
 								<label htmlFor="password_input">Password</label>
-								<a href="#">Forgot Password</a>
+								<a href="#">Forgot Password ?</a>
 							</div>
 							<input 
                                 type="password" 
