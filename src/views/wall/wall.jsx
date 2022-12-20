@@ -62,7 +62,7 @@ export class Wall extends Component {
                     <div className="container">
                         <h2>The Wall Assignment</h2>
                         <nav>
-                            <p>Welcome, Alfonso Martin B. Angeles</p>
+                            <p>Welcome, Alfonso Martin B. Angeles!</p>
                             <a href="/">Logout</a>
                         </nav>
                     </div>
