@@ -1,0 +1,13 @@
+@import "../../../../index.scss";
+
+.edit_comment_form {
+    textarea {
+        @extend .textarea;
+        height: 84px;
+        margin-bottom: 15px;
+    }
+
+    p {
+        margin-top: 0;
+    }
+}

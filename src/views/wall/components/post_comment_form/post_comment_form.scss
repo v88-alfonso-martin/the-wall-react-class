@@ -1,0 +1,14 @@
+@import "../../../../index.scss";
+
+.post_comment_form {
+    @extend .bordered_container;
+    margin-bottom: 10px;
+    margin-top: 22px;
+    text-align: right;
+
+    textarea {
+        @extend .textarea;
+        height: 84px;
+        margin-bottom: 15px;
+    }
+}

@@ -1,0 +1,37 @@
+@import "../../../../index.scss";
+
+.action_buttons {
+    display: flex;
+
+    & > div,
+    button {
+        align-items: center;
+        background-color: $white;
+        border: none;
+        color: $actions_font_color;
+        cursor: pointer;
+        display: flex;
+        margin-right: 20px;
+        padding: 0;
+
+        img {
+            margin-right: 5px;
+        }
+
+        .blue_text {
+            color: $primary_color;
+        }
+
+        & > div {
+            text-align: left;
+
+            span {
+                font-weight: 900;
+            }
+        }
+
+        &:last-child {
+            cursor: auto;
+        }
+    }
+}

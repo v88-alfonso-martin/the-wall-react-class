@@ -1,0 +1,79 @@
+@import "../../index.scss";
+
+.wall_container {
+    header {
+        @extend .box_container;
+        color: $font_color;
+    
+        .container {
+            align-items: center;
+            display: flex;
+            height: 121px;
+            justify-content: space-between;
+            margin: 0 auto;
+            max-width: 1280px;
+            padding-inline: 68px;
+    
+            nav {
+                align-items: center;
+                display: flex;
+    
+                a {
+                    color: $primary_color;
+                    font-weight: bold;
+                    margin-left: 15px;
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+    main {
+        display: flex;
+        justify-content: center;
+        margin: 50px 78px;
+
+        .container {
+            @extend .box_container;
+            box-sizing: border-box;
+            flex: 1;
+            margin: 0 auto;
+            max-width: 1280px;
+            min-height: 1035px;
+            padding: 58px 68px;
+            
+            .main_header {
+                align-items: center;
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 30px;
+
+                p {
+                    color: $actions_font_color;
+
+                    span {
+                        color: $primary_color;
+                        font-weight: 900;
+                    }
+                }
+
+                button {
+                    @include button(6px, 10px 30px);
+                }
+            }
+
+            #no_messages {
+                align-items: center;
+                color: $actions_font_color;
+                display: flex;
+                flex-direction: column;
+                flex: 1;
+                justify-content: center;
+                margin-top: 126px;
+
+                p {
+                    margin-top: 30px;
+                }
+            }
+        }
+    }
+}

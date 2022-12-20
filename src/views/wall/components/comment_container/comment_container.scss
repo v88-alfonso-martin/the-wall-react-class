@@ -1,0 +1,7 @@
+@import "../../../../index.scss";
+
+.comment_container {
+    @extend .bordered_container;
+    margin-bottom: 10px;
+    margin-top: 20px;
+}

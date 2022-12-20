@@ -1,0 +1,61 @@
+@import "../../index.scss";
+
+.delete_comment_modal {
+    background-color: rgba($black, 50%);
+    height: 100%;
+    left: 0;
+    top: 0;
+    width: 100%;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    position: fixed;
+
+    .modal_container {
+        @extend .box_container;
+        box-sizing: border-box;
+        min-height: 307px;
+        padding: 15px;
+        text-align: center;
+        word-wrap: break-word;
+        color: $font_color;
+        flex: 1;
+        max-width: 540px;
+        padding: 50px;
+        position: relative;
+
+        img {
+            cursor: pointer;
+            position: absolute;
+            right: 10px;
+            top: 10px;
+        }
+
+        h2 {
+            margin-bottom: 40px;
+            margin-top: 0;
+        }
+
+        form {
+
+            textarea {
+                @extend .textarea;
+                min-height: 185px;
+                margin-bottom: 30px;
+            }
+
+            .buttons_container {
+                margin-top: 40px;
+                padding-left: 40px;
+                text-align: center;
+
+                .success_button {
+                    margin-left: 50px;
+                    padding: 15px 40px;
+                }
+            }
+        }
+
+
+    }
+}

@@ -1,0 +1,73 @@
+$actions_font_color: #707070;
+$background_color: #fbfbfb;
+$border_color: #dce6ff;
+$error_color: #e1554c;
+$font_color: #152c61;
+$primary_color: #2c6bff;
+$textarea_color: #f5f8ff;
+$black: #000;
+$white: #fff;
+
+@font-face {
+    font-family: Poppins;
+    src: url("./assets/fonts/Poppins-Regular.ttf");
+}
+
+* {
+    font-family: Poppins;
+}
+
+body {
+    background-color: $background_color;
+}
+
+@mixin button($border_radius, $padding) {
+    background-color: $primary_color;
+    border: none;
+    color: $white;
+    cursor: pointer;
+    font-weight: 900;
+    border-radius: $border_radius;
+    padding: $padding;
+}
+
+.box_container {
+    background-color: $white;
+    border-radius: 6px;
+    box-shadow: 0px 4px 8px rgba($black, 0.05);
+}
+
+.textarea {
+    background-color: $textarea_color;
+    border-radius: 6px;
+    border: 1px solid $border_color;
+    box-sizing: border-box;
+    color: $font_color;
+    padding: 10px;
+    resize: none;
+    width: 100%;
+}
+
+.cancel_button {
+    background-color: $white;
+    border: none;
+    color: rgba($black, 60%);
+    cursor: pointer;
+    margin-right: 24px;
+}
+
+.success_button {
+    @include button(6px, 10px 30px);
+}
+
+.disabled_button {
+    background-color: $primary_color;
+    opacity: 50%;
+}
+
+.bordered_container {
+    border-radius: 6px;
+    border: 1px solid $border_color;
+    box-sizing: border-box;
+    padding: 30px 30px 20px 30px;
+}
