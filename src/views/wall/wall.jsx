@@ -51,7 +51,7 @@ export class Wall extends Component {
     }
 
     deleteMessage = (message_id) => {
-        this.setState(prev_state => ({messages: prev_state.messages.filter((message) => message.id !== message_id)}))
+        this.setState(prev_state => ({ messages: prev_state.messages.filter((message) => message.id !== message_id) }))
     }
 
 	render() {

@@ -14,16 +14,16 @@ export class CommentsContainer extends Component {
 
     openDeleteCommentModal = (comment_id) => {
 		this.setState({ is_open_delete_comment_modal: true, comment_id });
-	};
+	}
 
 	closeDeleteCommentModal = (event) => {
 		if (event.target === event.currentTarget) {
 			this.setState({ is_open_delete_comment_modal: false });
 		}
-	};
+	}
 	render() {
-        let {is_open_delete_comment_modal, comment_id} = this.state;
-        let {comments, deleteComment} = this.props;
+        let { is_open_delete_comment_modal, comment_id } = this.state;
+        let { comments, deleteComment } = this.props;
 		return (
             <Fragment>
                 <ul className="comments_container">

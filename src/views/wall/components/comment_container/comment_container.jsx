@@ -16,7 +16,7 @@ export class CommentContainer extends Component {
     }
 
     enableEditComment = () => {
-        this.setState({is_editing: true});
+        this.setState({ is_editing: true });
     }
 
     cancelEditComment = () => {
@@ -31,7 +31,7 @@ export class CommentContainer extends Component {
         this.setState({
             comment_content: event.target.value,
             is_button_disabled: event.target.value !== "" ? false : true
-        })
+        });
     }
 
     submitEditComment = (event) => {
@@ -40,15 +40,21 @@ export class CommentContainer extends Component {
             is_editing: false,
             comment_content: event.target.post_comment.value,
             prev_comment_content: event.target.post_comment.value
-        })
+        });
     }
 
 	render() {
-        let {openDeleteCommentModal, comment: {id}} = this.props
-        let {comment_content, is_editing, is_button_disabled} = this.state;
+        let { openDeleteCommentModal, comment: { id } } = this.props
+        let { comment_content, is_editing, is_button_disabled } = this.state;
+
 		return (
             <li className="comment_container">
-                <EditCommentForm comment_content={comment_content} is_editing={is_editing} changeEditCommentContent={this.changeEditCommentContent} submitEditComment={this.submitEditComment}>
+                <EditCommentForm 
+                    comment_content={comment_content} 
+                    is_editing={is_editing} 
+                    changeEditCommentContent={this.changeEditCommentContent} 
+                    submitEditComment={this.submitEditComment}
+                >
                     <ActionButtons 
                         id={id}
                         openModal={openDeleteCommentModal}

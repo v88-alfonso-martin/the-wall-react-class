@@ -23,21 +23,21 @@ export class MessageContainer extends Component {
 
     /* Comment actions */
     toggleCreateComment = () => {
-        this.setState(prev_state => ({toggle_comment: !prev_state.toggle_comment, comment_content: ""}));
+        this.setState(prev_state => ({ toggle_comment: !prev_state.toggle_comment, comment_content: "" }));
     }
 
     changeCommentContent = (event) => {
-        this.setState({comment_content: event.target.value});
+        this.setState({ comment_content: event.target.value });
     }
 
     submitComment = (event) => {
         event.preventDefault();
-        this.setState(prev_state => ({comments: [{id: getId(), content: prev_state.comment_content}, ...prev_state.comments], comment_content: ""}));
+        this.setState(prev_state => ({ comments: [{id: getId(), content: prev_state.comment_content}, ...prev_state.comments], comment_content: "" }));
     }
 
     /* Edit actions */
     enableEditMessage = () => {
-        this.setState({is_editing: true});
+        this.setState({ is_editing: true });
     }
 
     cancelEditMessage = () => {
@@ -51,7 +51,7 @@ export class MessageContainer extends Component {
         this.setState({
             message_content: event.target.value,
             is_button_disabled: event.target.value !== "" ? false : true
-        })
+        });
     }
 
     submitEditMessage = (event) => {
@@ -60,11 +60,11 @@ export class MessageContainer extends Component {
             is_editing:false,
             message_content: event.target.post.value,
             prev_message_content: event.target.post.value
-        })
+        });
     }
 
     deleteComment = (comment_id) => {
-        this.setState(prev_state => ({comments: prev_state.comments.filter((comment) => comment.id !== comment_id)}))
+        this.setState(prev_state => ({ comments: prev_state.comments.filter((comment) => comment.id !== comment_id) }))
     }
 
 	render() {

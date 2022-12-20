@@ -14,13 +14,13 @@ export class MessagesContainer extends Component {
 
 	openDeleteMessageModal = (message_id) => {
 		this.setState({ is_open_delete_message_modal: true, message_id });
-	};
+	}
 
 	closeDeleteMessageModal = (event) => {
 		if (event.target === event.currentTarget) {
 			this.setState({ is_open_delete_message_modal: false });
 		}
-	};
+	}
 
 	render() {
 		let { messages, deleteMessage } = this.props;

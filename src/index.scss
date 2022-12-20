@@ -23,11 +23,11 @@ body {
 
 @mixin button($border_radius, $padding) {
     background-color: $primary_color;
+    border-radius: $border_radius;
     border: none;
     color: $white;
     cursor: pointer;
     font-weight: 900;
-    border-radius: $border_radius;
     padding: $padding;
 }
 
