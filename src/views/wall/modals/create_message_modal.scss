@@ -1,0 +1,22 @@
+@import "../../../index.scss";
+
+.create_message_modal {
+	.modal-header {
+		border-bottom: 0 none;
+	}
+
+    .modal-body {
+		text-align: center;
+	}
+
+	form {
+		textarea {
+			@extend .textarea;
+			min-height: 185px;
+		}
+
+		.buttons_container {
+			text-align: right;
+		}
+	}
+}

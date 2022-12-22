@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import "./action_buttons.scss";
-import comment_icon from "../../../../assets/images/messages-bubble-square-text.png";
-import comment_icon_blue from "../../../../assets/images/messages-bubble-square-text-blue.png";
-import edit_icon from "../../../../assets/images/pencil-write.png";
-import delete_icon from "../../../../assets/images/delete.png";
-import user_icon from "../../../../assets/images/User-Placeholder.png";
+import comment_icon from "../../../assets/images/messages-bubble-square-text.png";
+import comment_icon_blue from "../../../assets/images/messages-bubble-square-text-blue.png";
+import edit_icon from "../../../assets/images/pencil-write.png";
+import delete_icon from "../../../assets/images/delete.png";
+import user_icon from "../../../assets/images/User-Placeholder.png";
 
 export class ActionButtons extends Component {
 

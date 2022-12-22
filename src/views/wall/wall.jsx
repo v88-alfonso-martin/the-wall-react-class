@@ -1,66 +1,70 @@
 import React, { Component } from "react";
-import empty_icon from "../../assets/images/empty.png"
-import CreateMessageModal from "../create_message_modal/create_message_modal";
-import MessagesContainer from "./components/messages_container/messages_container";
+import empty_icon from "../../assets/images/empty.png";
+import CreateMessageModal from "./modals/create_message_modal";
+import { getId } from "../../__helpers/helpers";
+import MessageContainer from "./components/message_container";
+import DeleteMessageModal from "./modals/delete_message_modal";
 import "./wall.scss";
-
-export let getId = () => {
-    return `id${Date.now() + Math.random().toString(16).slice(2)}`;
-}
 
 export class Wall extends Component {
     constructor() {
         super();
         this.state = {
             is_open_create_message_modal: false,
+            is_open_delete_message_modal: false,
+            messages: [],
             message_content: "",
-            is_button_disabled: false,
-            messages: []
+            message_id: ""
         };
     }
 
     openCreateMessageModal = () => {
-        this.setState({ 
-            is_open_create_message_modal: true,
-            is_button_disabled: true
-        });
+        this.setState({ is_open_create_message_modal: true });
     }
 
-    closeCreateMessageModal = (event) => {
-        if(event.target === event.currentTarget) {
-            this.setState({ 
-                is_open_create_message_modal: false,
-                is_button_disabled: false
-            });
-        }
+    closeCreateMessageModal = () => {
+        this.setState({ is_open_create_message_modal: false, message_content: "" });
     }
 
     changeMessageContent = (event) => {
-        this.setState({
-            message_content: event.target.value,
-            is_button_disabled: event.target.value !== "" ? false : true
-        });
+        this.setState({ message_content: event.target.value });
     }
 
     submitMessage = (event) => {
         event.preventDefault();
         this.setState(prev_state => ({
-            messages: [{id: getId(), content: prev_state.message_content}, ...prev_state.messages]
+            messages: [{id: getId(), content: prev_state.message_content}, ...prev_state.messages],
+            is_open_create_message_modal: false,
+            message_content: ""
         }));
-        this.closeCreateMessageModal(event);
     }
 
+    openDeleteMessageModal = (message_id) => {
+		this.setState({ is_open_delete_message_modal: true, message_id });
+	}
+
+    closeDeleteMessageModal = () => {
+		this.setState({ is_open_delete_message_modal: false });
+	}
+
     deleteMessage = (message_id) => {
-        this.setState(prev_state => ({ messages: prev_state.messages.filter((message) => message.id !== message_id) }))
+        this.setState(prev_state => ({ messages: prev_state.messages.filter((message) => message.id !== message_id), is_open_delete_message_modal: false }));
     }
 
 	render() {
-        let { is_open_create_message_modal, is_button_disabled, messages } = this.state;
+        let { 
+            is_open_create_message_modal, 
+            is_open_delete_message_modal, 
+            messages, 
+            message_content,
+            message_id
+        } = this.state;
+
 		return (
             <div className="wall_container">
                 <header>
                     <div className="container">
-                        <h2>The Wall Assignment</h2>
+                        <h4>The Wall Assignment</h4>
                         <nav>
                             <p>Welcome, Alfonso Martin B. Angeles!</p>
                             <a href="/">Logout</a>
@@ -75,23 +79,40 @@ export class Wall extends Component {
                             </p>
                             <button onClick={this.openCreateMessageModal}>Create Message</button>
                         </div>
-                        <MessagesContainer messages={messages} deleteMessage={this.deleteMessage} />
-                        {messages.length === 0 ? (
+                        <ul className="messages_container">
+                            {messages.map((message) => (
+                                <MessageContainer 
+                                    key={message.id}
+                                    message={message}
+                                    openDeleteMessageModal={this.openDeleteMessageModal}
+                                />
+                            ))}
+                        </ul>
+                        {messages.length === 0 && (
                             <div id="no_messages">
                                 <img src={empty_icon} alt="Empty Icon" />
                                 <p>No Posted Message Yet.</p>
                             </div>
-                        ) : null}
+                        )}
                     </div>
                 </main>
-                {is_open_create_message_modal ? (
+                {is_open_create_message_modal && (
                     <CreateMessageModal 
-                        closeCreateMessageModal={this.closeCreateMessageModal} 
+                        show={is_open_create_message_modal}
+                        onHide={this.closeCreateMessageModal} 
                         changeMessageContent={this.changeMessageContent}
-                        is_button_disabled={is_button_disabled}
+                        message_content={message_content}
                         submitMessage={this.submitMessage}
                     />
-                ) : null}
+                )}
+                {is_open_delete_message_modal && (
+                    <DeleteMessageModal
+                        show={is_open_delete_message_modal}
+                        message_id={message_id}
+                        onHide={this.closeDeleteMessageModal}
+                        deleteMessage={this.deleteMessage}
+                    />
+                )}
             </div>
         );
 	}

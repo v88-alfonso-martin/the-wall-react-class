@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import ActionButtons from "../actions_buttons/action_buttons";
-import EditCommentForm from "../edit_comment_form/edit_comment_form";
-import EditFormButtons from "../edit_form_buttons/edit_form_buttons";
+import ActionButtons from "./action_buttons";
+import EditCommentForm from "./edit_comment_form";
+import EditFormButtons from "./edit_form_buttons";
 import "./comment_container.scss";
 
 export class CommentContainer extends Component {
@@ -11,7 +11,6 @@ export class CommentContainer extends Component {
             comment_content: this.props.comment.content,
             prev_comment_content: this.props.comment.content,
             is_editing: false,
-            is_button_disabled: false
         }
     }
 
@@ -20,18 +19,11 @@ export class CommentContainer extends Component {
     }
 
     cancelEditComment = () => {
-        this.setState(prev_state => ({
-            is_editing: false,
-            comment_content: prev_state.prev_comment_content,
-            is_button_disabled: false
-        }));
+        this.setState(prev_state => ({ is_editing: false, comment_content: prev_state.prev_comment_content }));
     }
 
     changeEditCommentContent = (event) => {
-        this.setState({
-            comment_content: event.target.value,
-            is_button_disabled: event.target.value !== "" ? false : true
-        });
+        this.setState({ comment_content: event.target.value });
     }
 
     submitEditComment = (event) => {
@@ -44,8 +36,8 @@ export class CommentContainer extends Component {
     }
 
 	render() {
-        let { openDeleteCommentModal, comment: { id } } = this.props
-        let { comment_content, is_editing, is_button_disabled } = this.state;
+        let { openDeleteCommentModal, comment: { id } } = this.props;
+        let { comment_content, is_editing } = this.state;
 
 		return (
             <li className="comment_container">
@@ -61,7 +53,7 @@ export class CommentContainer extends Component {
                         action_for="comment"
                         enableEditForm={this.enableEditComment}
                     />
-                    <EditFormButtons cancelEditForm={this.cancelEditComment} is_button_disabled={is_button_disabled}/>
+                    <EditFormButtons cancelEditForm={this.cancelEditComment} textarea_content={comment_content} />
                 </EditCommentForm>
             </li>
         );

@@ -1,4 +1,4 @@
-@import "../../../../index.scss";
+@import "../../../index.scss";
 
 .message_container {
     @extend .bordered_container; 
@@ -7,4 +7,9 @@
     &:last-child {
         margin-bottom: 0;
     }
+}
+
+.comments_container {
+    list-style: none;
+    padding: 0;
 }

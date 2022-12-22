@@ -1,6 +1,6 @@
-@import "../../../../index.scss";
+@import "../../../index.scss";
 
-.edit_comment_form {
+.edit_message_form {
     textarea {
         @extend .textarea;
         height: 84px;

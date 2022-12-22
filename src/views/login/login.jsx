@@ -14,26 +14,31 @@ export class Login extends Component {
     }
 
     changeFormState = (event) => {
-        this.setState({ [event.target.name]: event.target.value })
+        this.setState({ [event.target.name]: event.target.value, is_error: false });
     }
 
-    loginUser = (event) => {
+    submitLoginUser = (event) => {
         event.preventDefault();
         let {email, password} = event.target;
+
         if(email.value === "test@test.com" && password.value === "password") {
             window.location.href = "/wall";
         }
         else {
-            this.setState({ is_error: true });
+            this.setState({ 
+                is_error: true, 
+                email: "", 
+                password: "" 
+            });
         }
     }
 
 	render() {
-        let { is_error } = this.state;
+        let { email, password, is_error } = this.state;
 		return (
 			<div className="login_container">
 				<div className="form_container">
-					<form method="post" onSubmit={this.loginUser}>
+					<form method="post" onSubmit={this.submitLoginUser}>
 						<h3>The Wall</h3>
 						<h1>Log In</h1>
 						<div className="form_group">
@@ -44,6 +49,7 @@ export class Login extends Component {
                                 id="email_input" 
                                 tabIndex="1" 
                                 autoFocus 
+                                value={email}
                                 onChange={this.changeFormState}
                                 className={is_error ? "show_error_color" : ""}
                             />
@@ -59,6 +65,7 @@ export class Login extends Component {
                                 name="password" 
                                 id="password_input" 
                                 tabIndex="2" 
+                                value={password}
                                 onChange={this.changeFormState}
                                 className={is_error ? "show_error_color" : ""}
                             />

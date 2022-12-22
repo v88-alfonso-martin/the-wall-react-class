@@ -1,13 +1,12 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import illustration from "../../assets/images/Group_2019.png";
+import { EMAIL, PASSWORD } from "../../__config/constant";
 import "./signup.scss";
 
 export class Signup extends Component {
     constructor() {
         super();
-        this.EMAIL = { is_valid: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/ };
-        this.PASSWORD = { min: 8 };
         this.state = {
             email: "",
             password: "",
@@ -19,28 +18,29 @@ export class Signup extends Component {
     }
     
     changeFormState = (event) => {
-        this.setState({ [event.target.name]: event.target.value })
+        let { is_error_email, is_error_password, is_error_confirm_password }= this.state;
+        this.setState({ [event.target.name]: event.target.value });
     }
 
-    signupUser = (event) => {
+    submitSignupUser = (event) => {
         event.preventDefault();
         let { email, password, confirm_password } = event.target;
 
-        if(!this.EMAIL.is_valid.test(email.value)) {
+        if(!EMAIL.is_valid.test(email.value)) {
             this.setState({ is_error_email: true });
         }
         else {
             this.setState({ is_error_email: false });
         }
 
-        if(!password.value || password.value.length <= this.PASSWORD.min) {
+        if(!password.value || password.value.length <= PASSWORD.min) {
             this.setState({ is_error_password: true });
         }
         else {
             this.setState({ is_error_password: false });
         }
 
-        if(confirm_password?.value !== password.value) {
+        if(!confirm_password?.value || confirm_password?.value !== password.value) {
             this.setState({ is_error_confirm_password: true });
         }
         else {
@@ -59,15 +59,22 @@ export class Signup extends Component {
                 window.location.href = "./wall";
             }
         }
-
     }
 
 	render() {
-        let { is_error_email, is_error_password, is_error_confirm_password } = this.state;
+        let { 
+            email,
+            password,
+            confirm_password,
+            is_error_email, 
+            is_error_password, 
+            is_error_confirm_password,
+        } = this.state;
+
 		return (
             <div className="signup_container">
                 <div className="form_container">
-                    <form method="post" onSubmit={this.signupUser}>
+                    <form method="post" onSubmit={this.submitSignupUser}>
                         <h3>The Wall</h3>
                         <h1>Register</h1>
                         <div className="form_group">
@@ -78,6 +85,7 @@ export class Signup extends Component {
                                 id="email_input" 
                                 tabIndex="1" 
                                 autoFocus 
+                                value={email}
                                 onChange={this.changeFormState}
                                 className={is_error_email ? "show_error_color" : ""}
                             />
@@ -90,6 +98,7 @@ export class Signup extends Component {
                                 name="password" 
                                 id="password_input" 
                                 tabIndex="2" 
+                                value={password}
                                 onChange={this.changeFormState}
                                 className={is_error_password ? "show_error_color" : ""}
                             />
@@ -102,6 +111,7 @@ export class Signup extends Component {
                                 name="confirm_password" 
                                 id="confirm_password_input" 
                                 tabIndex="3" 
+                                value={confirm_password}
                                 onChange={this.changeFormState}
                                 className={is_error_confirm_password ? "show_error_color" : ""}
                             />
