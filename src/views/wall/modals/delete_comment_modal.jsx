@@ -25,7 +25,7 @@ export class DeleteCommentModal extends Component {
 						method="post"
 						onSubmit={this.submitDeleteComment}
 					>
-						<h3 className="pb-3">Confirm Delete Comment</h3>
+						<h4 className="pb-3">Confirm Delete Comment</h4>
 						<p>Are you sure you want to remove this comment? This action cannot be undone.</p>
 						<div className="buttons_container">
 							<button

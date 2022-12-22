@@ -24,7 +24,7 @@ export class CreateMessageModal extends Component {
 			>
 				<Modal.Header closeButton></Modal.Header>
 				<Modal.Body className="py-0 px-5 pb-5">
-					<h3 className="pb-3">Create a Message</h3>
+					<h4 className="pb-3">Create a Message</h4>
 					<form
 						method="post"
 						onSubmit={submitMessage}
