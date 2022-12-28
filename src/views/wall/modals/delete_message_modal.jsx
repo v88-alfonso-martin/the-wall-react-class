@@ -5,6 +5,7 @@ import "./delete_modal.scss";
 export class DeleteMessageModal extends Component {
 	render() {
 		let { deleteMessage, message_id, ...rest } = this.props;
+		
 		return (
 			<Modal
 				className="delete_comment_modal"
@@ -32,10 +33,7 @@ export class DeleteMessageModal extends Component {
 							>
 								Cancel
 							</button>
-							<button
-								type="submit"
-								className="success_button"
-							>
+							<button type="submit" className="success_button">
 								Yes, Remove it.
 							</button>
 						</div>

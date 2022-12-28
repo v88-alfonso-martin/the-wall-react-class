@@ -8,12 +8,16 @@ export class CreateMessageModal extends Component {
 		this.textarea = createRef();
 	}
 
+    /**
+    * DOCU: Add cursor on textarea when creating message.
+    */
 	componentDidMount() {
 		this.textarea.current.focus();
 	}
 
 	render() {
 		let { changeMessageContent, message_content, submitMessage, ...rest } = this.props;
+		
 		return (
 			<Modal
 				className="create_message_modal"
@@ -25,10 +29,7 @@ export class CreateMessageModal extends Component {
 				<Modal.Header closeButton></Modal.Header>
 				<Modal.Body>
 					<h4>Create a Message</h4>
-					<form
-						method="post"
-						onSubmit={submitMessage}
-					>
+					<form method="post" onSubmit={submitMessage}>
 						<textarea
 							name="message"
 							placeholder="Type your message here."

@@ -33,10 +33,7 @@ export class DeleteCommentModal extends Component {
 							>
 								Cancel
 							</button>
-							<button
-								type="submit"
-								className="success_button"
-							>
+							<button type="submit" className="success_button">
 								Yes, Remove it.
 							</button>
 						</div>

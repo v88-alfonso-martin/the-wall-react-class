@@ -25,7 +25,7 @@ export class Signup extends Component {
     }
 
     /**
-    * DOCU: Signup the user.
+    * DOCU: Signup the user and redirect if no error.
     */
     submitSignupUser = (event) => {
         event.preventDefault();

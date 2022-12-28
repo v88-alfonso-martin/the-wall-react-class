@@ -11,12 +11,18 @@ export class EditMessageForm extends Component {
         }
     }
 
+    /**
+    * DOCU: Change the state of the message content.
+    */
     changeMessageContent = (event) => {
         this.setState({
             message_content: event.target.value
         });
     }
 
+    /**
+    * DOCU: Add cursor on textarea when editing comment.
+    */
     componentDidMount() {
         if(this.props.is_editing) {
             let end = this.state.message_content.length;
@@ -28,6 +34,7 @@ export class EditMessageForm extends Component {
 	render() {
 		let { submitEditMessage, disableEditMessage, message_id } = this.props;
         let { message_content } = this.state;
+        
 		return (
 			<form method="post" className="edit_message_form" onSubmit={(event) => {
                 submitEditMessage(event, message_content, message_id );

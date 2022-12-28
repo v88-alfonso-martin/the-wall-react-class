@@ -112,7 +112,7 @@ export class Wall extends Component {
         this.setState(prev_state => {
 			return {
 				messages: prev_state.messages.map(message => {
-					/** Get the parent message then delete the selected comment */
+					/** Get the parent message then edit the selected comment */
 					if (message.id === message_id) {
 						return {
 							...message,
@@ -205,7 +205,7 @@ export class Wall extends Component {
                         show={is_open_delete_comment_modal}
                         message_id={message_id}
                         comment_id={comment_id} 
-                        onHide={() => {this.setState(toggleShowModal    ("is_open_delete_comment_modal", false))}}
+                        onHide={() => {this.setState(toggleShowModal("is_open_delete_comment_modal", false))}}
                         deleteComment={this.deleteComment}
                     />
                 )}
