@@ -3,9 +3,14 @@
 .delete_message_modal,
 .delete_comment_modal {
     text-align: center;
-
+	
     .modal-header {
 		border-bottom: 0 none;
+	}
+
+    .modal-body {
+		padding-block: 0;
+		padding-inline: 50px;
 	}
 
 	p {
@@ -13,9 +18,11 @@
 	}
 
 	form {
+		padding-bottom: 50px;
 
 		h4 {
 			font-weight: 900;
+			margin-bottom: 40px;
 		}
 
 		.buttons_container {
@@ -25,7 +32,7 @@
 
 			.success_button {
 				margin-left: 50px;
-				padding: 15px 40px;
+				padding: 12px 40px;
 			}
 		}
 	}

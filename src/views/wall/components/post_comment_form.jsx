@@ -5,6 +5,13 @@ export class PostCommentForm extends Component {
 	constructor() {
         super();
         this.textarea = createRef();
+		this.state = {
+			comment_content: ""
+		};
+    }
+
+	changeCommentContent = (event) => {
+        this.setState({ comment_content: event.target.value });
     }
 
     componentDidMount() {
@@ -12,11 +19,16 @@ export class PostCommentForm extends Component {
     }
 
 	render() {
-		let { comment_content, submitComment, changeCommentContent } = this.props;
+		let { submitComment, message_id } = this.props;
+		let { comment_content } = this.state;
 
 		return (
-			<form method="post" className="post_comment_form" onSubmit={submitComment}>
-				<textarea name="comment" placeholder="Type your comment here." value={comment_content} onChange={changeCommentContent} ref={this.textarea}></textarea>
+			<form method="post" className="post_comment_form" onSubmit={(event) => {
+				event.preventDefault();
+				submitComment(message_id, comment_content);
+				this.setState({comment_content: ""})
+			}}>
+				<textarea name="comment" placeholder="Type your comment here." value={comment_content} onChange={this.changeCommentContent} ref={this.textarea}></textarea>
 				<button type="submit" className={!comment_content ? "success_button disabled_button" : "success_button"} disabled={!comment_content}>Post Comment</button>
 			</form>
 		);

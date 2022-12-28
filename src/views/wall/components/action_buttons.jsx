@@ -7,9 +7,8 @@ import delete_icon from "../../../assets/images/delete.png";
 import user_icon from "../../../assets/images/User-Placeholder.png";
 
 export class ActionButtons extends Component {
-
 	render() {
-        let { openModal, id, enableEditForm, action_for, comment_length, toggle_comment, toggleCreateComment } = this.props;
+        let { openModal, id, enableEditForm, action_for, comment_length, toggle_comment, toggleCreateComment, message_id } = this.props;
 
 		return (
             <div className="action_buttons">
@@ -23,7 +22,7 @@ export class ActionButtons extends Component {
                     <img src={edit_icon} alt="Edit Icon" />
                     <span className="blue_text">Edit</span>
                 </button>
-                <button type="button" onClick={() => openModal(id)}>
+                <button type="button" onClick={() => openModal(id, message_id)}>
                     <img src={delete_icon} alt="Delete Icon" />
                     <span>Delete</span>
                 </button>

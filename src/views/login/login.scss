@@ -60,6 +60,7 @@
                 }
 
                 .error_message {
+                    display: block;
                     color: $error_color;
                     font-size: 14px;
                     margin-block: 5px;

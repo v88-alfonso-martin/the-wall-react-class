@@ -1,30 +1,40 @@
 import React, { Component, createRef } from "react";
+import EditFormButtons from "./edit_form_buttons";
 import "./edit_message_form.scss";
 
 export class EditMessageForm extends Component {
-	constructor() {
-        super();
+	constructor(props) {
+        super(props);
         this.textarea = createRef();
+        this.state = {
+            message_content: this.props.message_content,
+        }
     }
 
-    componentDidUpdate() {
-        if(this.props.is_editing && !this.props.toggle_comment) {
-            let end = this.props.message_content.length;
+    changeMessageContent = (event) => {
+        this.setState({
+            message_content: event.target.value
+        });
+    }
+
+    componentDidMount() {
+        if(this.props.is_editing) {
+            let end = this.state.message_content.length;
             this.textarea.current.setSelectionRange(end, end);
             this.textarea.current.focus();
         }
     }
 
 	render() {
-		let { message_content, children, is_editing, submitEditMessage, changeMessageContent } = this.props;
+		let { submitEditMessage, disableEditMessage, message_id } = this.props;
+        let { message_content } = this.state;
 		return (
-			<form method="post" className="edit_message_form" onSubmit={submitEditMessage}>
-				{is_editing ? (
-					<textarea name="post" placeholder="Type your message here." value={message_content} onChange={changeMessageContent} ref={this.textarea}></textarea>
-				) : (
-					<p>{message_content}</p>
-				)}
-				{is_editing ? children[1] : children[0]}
+			<form method="post" className="edit_message_form" onSubmit={(event) => {
+                submitEditMessage(event, message_content, message_id );
+                disableEditMessage();
+            }}>
+				<textarea name="post" placeholder="Type your message here." value={message_content} onChange={this.changeMessageContent} ref={this.textarea}></textarea>
+				<EditFormButtons cancelEditForm={disableEditMessage} textarea_content={message_content} />
 			</form>
 		);
 	}

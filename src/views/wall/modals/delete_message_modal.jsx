@@ -3,12 +3,6 @@ import Modal from "react-bootstrap/Modal";
 import "./delete_modal.scss";
 
 export class DeleteMessageModal extends Component {
-	submitDeleteMessage = event => {
-		event.preventDefault();
-		let { deleteMessage, message_id } = this.props;
-
-		deleteMessage(message_id);
-	};
 	render() {
 		let { deleteMessage, message_id, ...rest } = this.props;
 		return (
@@ -20,12 +14,15 @@ export class DeleteMessageModal extends Component {
 				centered
 			>
 				<Modal.Header closeButton></Modal.Header>
-				<Modal.Body className="py-0 px-5 pb-5">
+				<Modal.Body>
 					<form
 						method="post"
-						onSubmit={this.submitDeleteMessage}
+						onSubmit={(event) => {
+							event.preventDefault();
+							deleteMessage(message_id);
+						}}
 					>
-						<h4 className="pb-3">Confirm Delete Message</h4>
+						<h4>Confirm Delete Message</h4>
 						<p>Are you sure you want to remove this message? This action cannot be undone.</p>
 						<div className="buttons_container">
 							<button

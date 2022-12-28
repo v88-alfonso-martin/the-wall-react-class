@@ -17,47 +17,40 @@ export class Signup extends Component {
         }
     }
     
+    /**
+    * DOCU: Change the state of the form.
+    */
     changeFormState = (event) => {
-        let { is_error_email, is_error_password, is_error_confirm_password }= this.state;
         this.setState({ [event.target.name]: event.target.value });
     }
 
+    /**
+    * DOCU: Signup the user.
+    */
     submitSignupUser = (event) => {
         event.preventDefault();
-        let { email, password, confirm_password } = event.target;
+        const { email, password, confirm_password } = this.state;
+		const error = {
+			is_error_email: false,
+			is_error_password: false,
+			is_error_confirm_password: false,
+		}
 
-        if(!EMAIL.is_valid.test(email.value)) {
-            this.setState({ is_error_email: true });
+        /** Validate email. */
+        error.is_error_email = !EMAIL.is_valid.test(email);
+
+        /** Validate password. */
+        error.is_error_password = !password || password.length <= PASSWORD.min;
+
+        /** Validate confirm password. */
+        error.is_error_confirm_password = !confirm_password || confirm_password !== password;
+
+        /** Check if no error, if none redirect to the wall page else display errors. */
+        if(!error.is_error_email && !error.is_error_password && !error.is_error_confirm_password) {
+            window.location.href = "./wall";
         }
         else {
-            this.setState({ is_error_email: false });
-        }
-
-        if(!password.value || password.value.length <= PASSWORD.min) {
-            this.setState({ is_error_password: true });
-        }
-        else {
-            this.setState({ is_error_password: false });
-        }
-
-        if(!confirm_password?.value || confirm_password?.value !== password.value) {
-            this.setState({ is_error_confirm_password: true });
-        }
-        else {
-            this.setState({ is_error_confirm_password: false });
-        }
-    }
-
-    componentDidUpdate(prev_props, prev_state) {
-        let { is_error_email, is_error_password, is_error_confirm_password }= this.state;
-
-        if(prev_state.is_error_email !== is_error_email
-            || prev_state.is_error_password !== is_error_password
-            || prev_state.is_error_confirm_password !== is_error_confirm_password
-        ) {
-            if(!is_error_email && !is_error_password && !is_error_confirm_password) {
-                window.location.href = "./wall";
-            }
+            this.setState(error);
         }
     }
 
@@ -89,7 +82,7 @@ export class Signup extends Component {
                                 onChange={this.changeFormState}
                                 className={is_error_email ? "show_error_color" : ""}
                             />
-                            <div className={is_error_email ? "error_message show_error_message" : "error_message"}>Incorrect Email</div>
+                            <span className={`error_message ${is_error_email ? "show_error_message" : ""}`}>Incorrect Email</span>
                         </div>
                         <div className="form_group">
                             <label htmlFor="password_input">Password</label>
@@ -102,7 +95,7 @@ export class Signup extends Component {
                                 onChange={this.changeFormState}
                                 className={is_error_password ? "show_error_color" : ""}
                             />
-                            <div className={is_error_password ? "error_message show_error_message" : "error_message"}>Incorrect Password</div>
+                            <span className={`error_message ${is_error_password ? "show_error_message" : ""}`}>Incorrect Password</span>
                         </div>
                         <div className="form_group">
                             <label htmlFor="confirm_password_input">Confirm Password</label>
@@ -115,7 +108,7 @@ export class Signup extends Component {
                                 onChange={this.changeFormState}
                                 className={is_error_confirm_password ? "show_error_color" : ""}
                             />
-                            <div className={is_error_confirm_password ? "error_message show_error_message" : "error_message"}>Password does not match</div>
+                            <span className={`error_message ${is_error_confirm_password ? "show_error_message" : ""}`}>Password does not match</span>
                         </div>
                         <p>
                             By creating an account, you agree with The W<br />all's <a href="#">Privacy Policy</a> and <a href="#">Terms of Use</a>

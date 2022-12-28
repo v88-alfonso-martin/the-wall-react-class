@@ -13,14 +13,21 @@ export class Login extends Component {
         }
     }
 
+    /**
+    * DOCU: Change the state of the form.
+    */
     changeFormState = (event) => {
         this.setState({ [event.target.name]: event.target.value, is_error: false });
     }
 
+    /**
+    * DOCU: Login the user.
+    */
     submitLoginUser = (event) => {
         event.preventDefault();
         let {email, password} = event.target;
 
+        /** Check if the user match the credentials, if not display errors else redirect to the wall page. */
         if(email.value === "test@test.com" && password.value === "password") {
             window.location.href = "/wall";
         }
@@ -35,6 +42,7 @@ export class Login extends Component {
 
 	render() {
         let { email, password, is_error } = this.state;
+
 		return (
 			<div className="login_container">
 				<div className="form_container">
@@ -53,7 +61,7 @@ export class Login extends Component {
                                 onChange={this.changeFormState}
                                 className={is_error ? "show_error_color" : ""}
                             />
-							<div className={is_error ? "error_message show_error_message" : "error_message"}>Incorrect Email</div>
+							<span className={`error_message ${is_error ? "show_error_message" : ""}`}>Incorrect Email</span>
 						</div>
 						<div className="form_group">
 							<div className="forgot_password_container">
@@ -69,7 +77,7 @@ export class Login extends Component {
                                 onChange={this.changeFormState}
                                 className={is_error ? "show_error_color" : ""}
                             />
-							<div className={is_error ? "error_message show_error_message" : "error_message"}>Incorrect Password</div>
+							<span className={`error_message ${is_error ? "show_error_message" : ""}`}>Incorrect Password</span>
 						</div>
 						<button type="submit" tabIndex="3">
 							SIGN IN

@@ -23,19 +23,20 @@ export class CreateMessageModal extends Component {
 				centered
 			>
 				<Modal.Header closeButton></Modal.Header>
-				<Modal.Body className="py-0 px-5 pb-5">
-					<h4 className="pb-3">Create a Message</h4>
+				<Modal.Body>
+					<h4>Create a Message</h4>
 					<form
 						method="post"
 						onSubmit={submitMessage}
 					>
 						<textarea
 							name="message"
+							placeholder="Type your message here."
 							ref={this.textarea}
 							value={message_content}
 							onChange={changeMessageContent}
 						></textarea>
-						<div className="buttons_container pt-4">
+						<div className="buttons_container">
 							<button
 								type="button"
 								className="cancel_button"

@@ -1,25 +1,32 @@
 @import "../../../index.scss";
 
 .create_message_modal {
+	
 	.modal-header {
 		border-bottom: 0 none;
 	}
 
     .modal-body {
 		text-align: center;
+		padding-block: 0;
+		padding-inline: 50px;
 	}
 
 	h4 {
 		font-weight: 900;
+		margin-bottom: 40px
 	}
 
 	form {
+		padding-bottom: 50px;
+		
 		textarea {
 			@extend .textarea;
 			min-height: 185px;
 		}
 
 		.buttons_container {
+			margin-top: 20px;
 			text-align: right;
 		}
 	}
