@@ -14,13 +14,6 @@ class App extends Component {
 	}
 	render() {
 		return (
-			// <div>
-			// 	<Practice
-			// 		show={this.state.show_modal}
-			// 		onHide={() => this.setState({ show_modal: false })}
-			// 	/>
-			// 	<button onClick={() => this.setState({ show_modal: true })}>acasc</button>
-			// </div>
 			<Router>
 				<Routes>
 					<Route exact path="/" element={<Login/>}></Route>
