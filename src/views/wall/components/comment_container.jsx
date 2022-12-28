@@ -12,7 +12,12 @@ export class CommentContainer extends Component {
     }
 
 	render() {
-        let { openDeleteCommentModal, comment: { id, content }, message_id, submitEditComment } = this.props;
+        let { 
+            openDeleteCommentModal, 
+            comment: { id, content }, 
+            message_id, 
+            submitEditComment 
+        } = this.props;
         let { is_editing } = this.state;
 
 		return (

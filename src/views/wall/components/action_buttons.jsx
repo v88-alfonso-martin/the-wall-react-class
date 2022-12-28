@@ -8,7 +8,16 @@ import user_icon from "../../../assets/images/User-Placeholder.png";
 
 export class ActionButtons extends Component {
 	render() {
-        let { openModal, id, enableEditForm, action_for, comment_length, toggle_comment, toggleCreateComment, message_id } = this.props;
+        let { 
+            openModal, 
+            id, 
+            enableEditForm, 
+            action_for, 
+            comment_length, 
+            toggle_comment, 
+            toggleCreateComment, 
+            message_id 
+        } = this.props;
 
 		return (
             <div className="action_buttons">

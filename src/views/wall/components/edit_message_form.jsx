@@ -34,13 +34,19 @@ export class EditMessageForm extends Component {
 	render() {
 		let { submitEditMessage, disableEditMessage, message_id } = this.props;
         let { message_content } = this.state;
-        
+
 		return (
 			<form method="post" className="edit_message_form" onSubmit={(event) => {
                 submitEditMessage(event, message_content, message_id );
                 disableEditMessage();
             }}>
-				<textarea name="post" placeholder="Type your message here." value={message_content} onChange={this.changeMessageContent} ref={this.textarea}></textarea>
+				<textarea 
+                    name="post"
+                    placeholder="Type your message here." 
+                    value={message_content} 
+                    onChange={this.changeMessageContent} 
+                    ref={this.textarea}
+                ></textarea>
 				<EditFormButtons cancelEditForm={disableEditMessage} textarea_content={message_content} />
 			</form>
 		);

@@ -39,7 +39,13 @@ export class EditCommentForm extends Component {
                 submitEditComment(message_id, comment_id, comment_content);
                 cancelEditComment();
             }}>
-				<textarea name="post_comment" value={comment_content} onChange={this.changeEditCommentContent} ref={this.textarea}></textarea>
+				<textarea 
+                    name="post_comment" 
+                    value={comment_content} 
+                    onChange={this.changeEditCommentContent} 
+                    ref={this.textarea}
+                >
+                </textarea>
                 <EditFormButtons cancelEditForm={cancelEditComment} textarea_content={comment_content} />
 			</form>
 		);
