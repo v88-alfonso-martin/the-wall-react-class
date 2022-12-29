@@ -21,12 +21,12 @@ export class ActionButtons extends Component {
 
 		return (
             <div className="action_buttons">
-                {action_for === "message" ? (
+                {action_for === "message" && (
                     <button type="button" onClick={toggleCreateComment}>
                         <img src={toggle_comment ? comment_icon_blue : comment_icon} alt="Comment Icon" />
                         <span className={toggle_comment ? "blue_text" : ""}>{comment_length} Comment</span>
                     </button>
-                ) : null}
+                )}
                 <button type="button" onClick={enableEditForm}>
                     <img src={edit_icon} alt="Edit Icon" />
                     <span className="blue_text">Edit</span>
