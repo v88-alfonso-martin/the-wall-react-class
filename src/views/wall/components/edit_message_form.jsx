@@ -8,7 +8,7 @@ export class EditMessageForm extends Component {
         this.textarea = createRef();
         this.state = {
             message_content: this.props.message_content,
-        }
+        };
     }
 
     /**

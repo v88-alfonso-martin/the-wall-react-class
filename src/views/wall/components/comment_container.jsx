@@ -8,7 +8,7 @@ export class CommentContainer extends Component {
         super(props);
         this.state = {
             is_editing: false,
-        }
+        };
     }
 
 	render() {
@@ -39,7 +39,6 @@ export class CommentContainer extends Component {
                         comment_id={id}
                         message_id={message_id}
                         is_editing={is_editing} 
-                        changeEditCommentContent={this.changeEditCommentContent} 
                         submitEditComment={submitEditComment}
                         cancelEditComment={() => this.setState({ is_editing: false})}
                     />

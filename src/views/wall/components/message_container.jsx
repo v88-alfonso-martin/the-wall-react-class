@@ -11,7 +11,7 @@ export class MessageContainer extends Component {
         this.state = {
             toggle_comment: false,
             is_editing: false,
-        }
+        };
     }
 
 	render() {

@@ -10,7 +10,7 @@ export class Login extends Component {
             email: "",
             password: "",
             is_error: false
-        }
+        };
     }
 
     /**

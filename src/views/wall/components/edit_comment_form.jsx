@@ -8,13 +8,13 @@ export class EditCommentForm extends Component {
         this.textarea = createRef();
         this.state = {
             comment_content: this.props.comment_content,
-        }
+        };
     }
     
     /**
     *   DOCU: Add cursor on textarea when editing comment.
     *   Triggered by src/views/wall/components/edit_comment_form.jsx
-        Last updated at: December 29, 2022
+    *   Last updated at: December 29, 2022
 	*   @author Alfonso Martin Angeles
     */
     componentDidMount() {

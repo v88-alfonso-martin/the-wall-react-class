@@ -14,7 +14,7 @@ export class Signup extends Component {
             is_error_email: false,
             is_error_password: false,
             is_error_confirm_password: false
-        }
+        };
     }
     
     /**
