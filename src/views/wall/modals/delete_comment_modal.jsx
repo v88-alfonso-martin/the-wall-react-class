@@ -4,7 +4,8 @@ import "./delete_modal.scss";
 
 export class DeleteCommentModal extends Component {
 	render() {
-		let {deleteComment, comment_id, message_id, ...rest } = this.props;
+		let { deleteComment, comment_id, message_id, ...rest } = this.props;
+		
 		return (
 			<Modal
 				className="delete_comment_modal"

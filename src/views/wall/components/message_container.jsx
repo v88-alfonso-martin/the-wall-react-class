@@ -14,13 +14,6 @@ export class MessageContainer extends Component {
         }
     }
 
-    /**
-    * DOCU: Toggle comment form.
-    */
-    toggleCreateComment = () => {
-        this.setState(prev_state => ({ toggle_comment: !prev_state.toggle_comment }));
-    }
-
 	render() {
         let { is_editing, toggle_comment } = this.state;
         let { 
@@ -41,7 +34,7 @@ export class MessageContainer extends Component {
                             openModal={openDeleteMessageModal} 
                             id={id}
                             enableEditForm={() => {this.setState({ is_editing: true })}}
-                            toggleCreateComment={this.toggleCreateComment}
+                            toggleCreateComment={() => this.setState(prev_state => ({ toggle_comment: !prev_state.toggle_comment }))}
                             comment_length={comments.length}
                             action_for="message"
                             toggle_comment={toggle_comment}

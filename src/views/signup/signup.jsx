@@ -18,14 +18,22 @@ export class Signup extends Component {
     }
     
     /**
-    * DOCU: Change the state of the form.
+    *   DOCU: Change the state of the form.
+    *   Triggered by src/views/signup/signup.jsx
+    *   Last updated at: December 29, 2022
+    *   @param {object} event onChange event that is trigged.
+    *   @author Alfonso Martin Angeles
     */
     changeFormState = (event) => {
         this.setState({ [event.target.name]: event.target.value });
     }
 
     /**
-    * DOCU: Signup the user and redirect if no error.
+    *   DOCU: Signup the user and redirect if no error.
+    *   Triggered by src/views/signup/signup.jsx
+    *   Last updated at: December 29, 2022
+    *   @param {object} event onSubmit event that is trigged.
+    *   @author Alfonso Martin Angeles
     */
     submitSignupUser = (event) => {
         event.preventDefault();

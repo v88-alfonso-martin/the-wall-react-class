@@ -10,15 +10,11 @@ export class PostCommentForm extends Component {
 		};
     }
 
-	/**
-    * DOCU: Change the state of the comment content.
-    */
-	changeCommentContent = (event) => {
-        this.setState({ comment_content: event.target.value });
-    }
-
     /**
-    * DOCU: Add cursor on textarea when posting comment.
+    *	DOCU: Add cursor on textarea when posting comment.
+	*   Triggered by src/views/wall/components/post_comment_form.jsx
+	*   Last updated at: December 29, 2022
+	*   @author Alfonso Martin Angeles
     */
     componentDidMount() {
     	this.textarea.current.focus();
@@ -38,7 +34,7 @@ export class PostCommentForm extends Component {
 					name="comment" 
 					placeholder="Type your comment here." 
 					value={comment_content} 
-					onChange={this.changeCommentContent} 
+					onChange={(event) => this.setState({ comment_content: event.target.value })} 
 					ref={this.textarea}
 				></textarea>
 				<button 

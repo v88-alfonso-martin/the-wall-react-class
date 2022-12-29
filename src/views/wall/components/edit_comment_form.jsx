@@ -10,16 +10,12 @@ export class EditCommentForm extends Component {
             comment_content: this.props.comment_content,
         }
     }
-
+    
     /**
-    * DOCU: Change the state of the edit comment content.
-    */
-    changeEditCommentContent = (event) => {
-        this.setState({ comment_content: event.target.value });
-    }
-
-    /**
-    * DOCU: Add cursor on textarea when editing comment.
+    *   DOCU: Add cursor on textarea when editing comment.
+    *   Triggered by src/views/wall/components/edit_comment_form.jsx
+        Last updated at: December 29, 2022
+	*   @author Alfonso Martin Angeles
     */
     componentDidMount() {
         if(this.props.is_editing) {
@@ -42,7 +38,7 @@ export class EditCommentForm extends Component {
 				<textarea 
                     name="post_comment" 
                     value={comment_content} 
-                    onChange={this.changeEditCommentContent} 
+                    onChange={(event) => this.setState({ comment_content: event.target.value })} 
                     ref={this.textarea}
                 >
                 </textarea>

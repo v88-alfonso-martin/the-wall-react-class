@@ -9,7 +9,10 @@ export class CreateMessageModal extends Component {
 	}
 
     /**
-    * DOCU: Add cursor on textarea when creating message.
+    *	DOCU: Add cursor on textarea when creating message.
+    *   Triggered by src/views/wall/modals/create_message_modal.jsx
+	*   Last updated at: December 29, 2022
+	*   @author Alfonso Martin Angeles
     */
 	componentDidMount() {
 		this.textarea.current.focus();

@@ -22,14 +22,22 @@ export class Wall extends Component {
     }
 
     /**
-    * DOCU: Change the message state of the form.
+    *   DOCU: Change the message state of the form.
+    *   Triggered by src/views/wall/modals/create_message_modal.jsx
+    *   Last updated at: December 29, 2022
+    *   @param {object} event onChange event that is trigged.
+    *   @author Alfonso Martin Angeles
     */
     changeMessageContent = (event) => {
         this.setState({ message_content: event.target.value });
     }
     
     /**
-    * DOCU: Add the message of the user.
+    *   DOCU: Add the message of the user.
+    *   Triggered by src/views/wall/modals/create_message_modal.jsx
+    *   Last updated at: December 29, 2022
+    *   @param {object} event onChange event that is trigged.
+    *   @author Alfonso Martin Angeles
     */
     submitMessage = (event) => {
         event.preventDefault();
@@ -41,14 +49,25 @@ export class Wall extends Component {
     }
 
     /**
-    * DOCU: Delete the selected message.
+    *   DOCU: Delete the selected message.
+    *   Triggered by src/views/wall/modals/delete_message_modal.jsx
+    *   Last updated at: December 29, 2022
+    *   @param {object} event onChange event that is trigged.
+    *   @author Alfonso Martin Angeles
     */
     deleteMessage = (message_id) => {
         this.setState(prev_state => ({ messages: prev_state.messages.filter((message) => message.id !== message_id), is_open_delete_message_modal: false }));
     }
 
     /**
-    * DOCU: Add edited message of the user.
+    *   DOCU: Add edited message of the user.
+    *   Triggered by src/views/wall/components/edit_message_form.jsx
+    *   Last updated at: December 29, 2022
+    *   @param {object} event onChange event that is trigged.
+    *   @param {string} message_content edited message to be added.
+    *   @param {string} message_id id of the message edited.
+    *   @returns {array} messages [{ id, content, comments }]
+    *   @author Alfonso Martin Angeles
     */
     submitEditMessage = (event, message_content, message_id) => {
         event.preventDefault();
@@ -65,7 +84,14 @@ export class Wall extends Component {
     }
 
     /**
-    * DOCU: Add comment to the message.
+    *   DOCU: Add comment to the message.
+    *   Triggered by src/views/wall/components/post_comment_form.jsx
+    *   Last updated at: December 29, 2022
+    *   @param {string} message_id id of the comment's parent message.
+    *   @param {string} comment_content comment to be added.
+    *   @returns {string} random generated id
+    *   @returns {array} messages [{ id, content, comments }]
+    *   @author Alfonso Martin Angeles
     */
     submitComment = (message_id, comment_content) => {
         this.setState(prev_state => {
@@ -86,7 +112,13 @@ export class Wall extends Component {
     }
 
     /**
-    * DOCU: Delete selected comment.
+    *   DOCU: Delete selected comment.
+    *   Triggered by src/views/wall/modals/delete_comment_modal.jsx
+    *   Last updated at: December 29, 2022
+    *   @param {string} message_id id of the comment's parent message.
+    *   @param {string} comment_id id of the comment to be deleted.
+    *   @returns {array} messages [{ id, content, comments }]
+    *   @author Alfonso Martin Angeles
     */
     deleteComment = (message_id, comment_id) => {
         this.setState(prev_state => {
@@ -106,7 +138,14 @@ export class Wall extends Component {
     }
 
     /**
-    * DOCU: Edit selected comment.
+    *   DOCU: Edit selected comment.
+    *   Triggered by src/views/wall/components/edit_comment_form.jsx
+    *   Last updated at: December 29, 2022
+    *   @param {string} message_id id of the comment's parent message.
+    *   @param {string} comment_id id of the comment to be deleted.
+    *   @param {string} comment_content edited comment to be added.
+    *   @returns {array} messages [{ id, content, comments }]
+    *   @author Alfonso Martin Angeles
     */
     submitEditComment = (message_id, comment_id, comment_content) => {
         this.setState(prev_state => {

@@ -14,14 +14,22 @@ export class Login extends Component {
     }
 
     /**
-    * DOCU: Change the state of the form.
+    *   DOCU: Change the state of the form.
+    *   Triggered by src/views/login/login.jsx
+    *   Last updated at: December 29, 2022
+    *   @param {object} event onChange event that is trigged.
+    *   @author Alfonso Martin Angeles
     */
     changeFormState = (event) => {
         this.setState({ [event.target.name]: event.target.value, is_error: false });
     }
 
     /**
-    * DOCU: Login the user.
+    *   DOCU: Login the user.
+    *   Triggered by src/views/login/login.jsx
+    *   Last updated at: December 29, 2022
+    *   @param {object} event onSubmit event that is trigged.
+    *   @author Alfonso Martin Angeles
     */
     submitLoginUser = (event) => {
         event.preventDefault();
